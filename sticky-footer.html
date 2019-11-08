@@ -1,0 +1,171 @@
+<html>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <body class="d-flex flex-column">
+    <style>
+    /* Sticky Footer Classes */
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body{
+            min-height: 100vh;
+            position: relative;
+            margin: 0;
+        }
+
+        #wrapper {
+            flex: 1 0 auto;
+            padding-left: 0;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+        }
+
+        #sticky-footer {
+        flex-shrink: none;
+       
+        }
+
+        /* Other Classes for Page Styling */
+
+        #wrapper.toggled {
+        padding-right: 250px;
+        }
+
+        #sidebar-wrapper {
+        z-index: 1000;
+        position: fixed;
+        right: 250px;
+        width: 0;
+        height: 100%;
+        margin-right: -250px;
+        overflow-y: auto;
+        background: #000;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+        }
+
+        #wrapper.toggled #sidebar-wrapper {
+            width: 250px;
+        }
+
+        #page-content-wrapper {
+        width: 100%;
+        position: absolute;
+        padding: 15px;
+        }
+
+        #wrapper.toggled #page-content-wrapper {
+        position: absolute;
+        margin-right: 0px;
+        }
+
+
+        /* Sidebar Styles */
+
+        .sidebar-nav {
+        position: absolute;
+        top: 0;
+        width: 250px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        }
+
+        .sidebar-nav li {
+        text-indent: 20px;
+        line-height: 40px;
+        }
+
+        .sidebar-nav li a {
+        display: block;
+        text-decoration: none;
+        color: #999999;
+        }
+
+        .sidebar-nav li a:hover {
+        text-decoration: none;
+        color: #fff;
+        background: rgba(255, 255, 255, 0.2);
+        }
+
+        .sidebar-nav li a:active, .sidebar-nav li a:focus {
+        text-decoration: none;
+        }
+
+        .sidebar-nav>.sidebar-brand {
+        height: 65px;
+        font-size: 18px;
+        line-height: 60px;
+        }
+
+        .sidebar-nav>.sidebar-brand a {
+        color: #999999;
+        }
+
+        .sidebar-nav>.sidebar-brand a:hover {
+        color: #fff;
+        background: none;
+        }
+
+        @media(min-width:768px) {
+            #wrapper {
+                padding-left: 0;
+            }
+            #wrapper.toggled {
+                padding-right: 600px;
+            }
+            #sidebar-wrapper {
+                width: 0;
+            }
+            #wrapper.toggled #sidebar-wrapper {
+                width: 600px;
+            }
+            #page-content-wrapper {
+                padding: 20px;
+                position: relative;
+            }
+            #wrapper.toggled #page-content-wrapper {
+                position: relative;
+                margin-right: 0;
+            }
+        }
+
+    </style>
+    <nav class="navbar navbar-expand navbar-dark bg-primary"> <a href="#menu-toggle" id="menu-toggle" class="navbar-brand"><span class="navbar-toggler-icon"></span></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+        <div class="collapse navbar-collapse" id="navbarsExample02">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active"> <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> </li>
+                <li class="nav-item"> <a class="nav-link" href="#">Link</a> </li>
+            </ul>
+            <form class="form-inline my-2 my-md-0"> </form>
+        </div>
+    </nav>
+    <div id="wrapper" class="toggled">
+         <div id="sidebar-wrapper">
+            
+        </div> <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <h1>Simple Sidebar</h1>
+                <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
+                <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+            </div>
+        </div> 
+    </div>
+    <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+        <div class="container text-center">
+        <small>Copyright &copy; Your Website</small>
+        </div>
+    </footer>
+    </body>
+              
+</html>

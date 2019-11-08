@@ -1,19 +1,1529 @@
-<!doctype html>
+<html>
 
-<html lang="en">
-<head>
-  <meta charset="utf-8">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+<link href="./css/spectrum.css" rel="stylesheet">
 
-  <title>My Portfolio</title>
-  <meta name="description" content="Frank John Begornia's Portfolio">
-  <meta name="author" content="Frank John Begornia">
 
-  <link rel="stylesheet" href="css/styles.css?v=1.0">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.15/fabric.min.js"></script>
+<script src="https://rawgit.com/fabricjs/fabric.js/master/lib/centering_guidelines.js"></script>
+<script src="https://rawgit.com/fabricjs/fabric.js/master/lib/aligning_guidelines.js"></script>
+<script src="./js/spectrum.js"></script>
 
-</head>
+<title>Dooey's Designer</title>
+<!-- favicons -->
+<!-- <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+<link rel="manifest" href="favicon/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff"> -->
+<!-- end favicons -->
+<!------ Include the above in your HEAD tag ---------->
+<body class="d-flex flex-column">
 
-<body>
-  <h1 style="text-align:center;">Hi Welcome to my Portfolio!</h1>
-  <p style="text-align:center;" >&bull; franknstayn &bull;</p>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body{
+            background-color: #fff;
+            overflow: hidden;
+            font-size: 0.9em; 
+        }
+
+        #sticky-footer {
+            /* flex-shrink: none;
+            position: absolute;
+            bottom: 0;
+            width: 100%; */
+            border-top: 1px solid #f1f1f1;
+            background-color: #fff;
+        }
+
+
+        #wrapper {
+            padding-left: 0;
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+        }
+
+        #wrapper.toggled {
+            padding-right: 250px;
+        }
+
+        #sidebar-wrapper {
+            z-index: 1000;
+            position: fixed;
+            right: 250px;
+            width: 0;
+            height: 100%;
+            margin-right: -250px;
+            overflow-y: auto;
+            background: #fff;
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+        }
+
+        #wrapper.toggled #sidebar-wrapper {
+            width: 250px;
+        }
+
+        #page-content-wrapper {
+            width: 100%;
+            position: absolute;
+            padding: 15px;
+            flex: 1 0 auto;
+        }
+
+        #wrapper.toggled #page-content-wrapper {
+            position: absolute;
+            margin-right: 0px;
+        }
+
+
+        /* Sidebar Styles */
+
+        .sidebar-nav {
+            position: absolute;
+            top: 0;
+            width: 250px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        @media(min-width:768px) {
+            #wrapper {
+                padding-left: 0;
+            }
+            #wrapper.toggled {
+                padding-right: 32rem;
+            }
+            #sidebar-wrapper {
+                width: 0;
+            }
+            #wrapper.toggled #sidebar-wrapper {
+                width: 32rem;
+            }
+            #page-content-wrapper {
+                padding: 20px;
+                position: relative;
+                flex: 1 0 auto;
+            }
+            #wrapper.toggled #page-content-wrapper {
+                position: relative;
+                margin-right: 0;
+            }
+        }
+
+        .nav-pills .nav-link{
+            border-radius: 0px;
+        }
+
+        .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+            color: #343a40;
+            background-color: #fff;
+            /* border-color: #343a40; */
+        }
+
+        .nav-item-side>a{
+            color: #fff;
+        }
+
+        .nav-item-side>a:hover{
+            color: #fff;
+            background: #343a40;
+        }
+        #menu-toggle{
+            color: #343a40;
+        }
+
+        #menu-toggle>a:hover{
+            background-color: #343a40;
+        }
+        /* .canvas-container{
+            left: 50%;
+        } */
+
+        .canvas-container { 
+            margin:0 auto ;
+            z-index: 9999;
+        }
+
+        .sides {
+            display: -moz-flex;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            position: relative;
+            max-height: 100%;
+            padding: 0 8px;
+        }
+
+        .side {
+            text-align: center;
+            padding: 9px;
+            width: 75px;
+            height: 75px;
+            min-height: 75px;
+            margin: 5px 0;
+            cursor: pointer;
+            border-radius: 3px;
+            position: relative;
+            border: 1px solid #ccc;
+            direction: ltr;
+        }
+        .side__img {
+            max-height: 100%;
+            width: 100%;
+        }
+        .side__price-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            padding: 2px;
+            width: 100%;
+            background: rgba(238,238,238,0.7);
+            color: #333;
+        }
+
+        .side_active{
+            border: 2px solid #343232;
+        }
+
+        .side_active:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: -10px;
+            margin-top: -10px;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 10px solid #343232;
+        }
+
+        .custom-bottom-border{
+            padding-bottom: 25px;
+        }
+        .patternThumbs {
+            width: 70px;
+            height: 70px;
+            padding:5px;
+            border-radius: 0px;
+            border-color: #000000;
+        }
+    </style>
+
+    <nav class="navbar navbar-expand" style="background: #fff; border: 1px solid #f1f1f1; height: 60px;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <a class="navbar-brand" href="#" style="font-family: 'Pacifico', cursive; color: #343232; font-size: 1.9em;"><span class="navbar-logo">
+                        <!-- <img src="LOGO 2.svg" height="50px"/></span> -->
+                        Dooey's Designer
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </nav>
+    
+    <div id="wrapper" class="toggled">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <div class="row justify-content-center h-100">
+                <!-- /.col-md-4 -->
+                <div class="col-md-9" style="padding-right: 0; background-color: #fff; overflow-y: auto; height: 80%!important">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="color" role="tabpanel" aria-labelledby="color-tab">
+                            <div class="container mt-3">
+                                <div class="row">
+                                    <div class="col-md-12 custom-bottom-border">
+                                        <h6>BODY COLOR</h6>
+                                        <!-- Nav tabs -->
+                                        <ul class="nav nav-tabs nav-justified">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" data-toggle="tab" href="#body_color_tab1">Solid</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#body_color_tab2">Gradient</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#body_color_tab3">Pattern</a>
+                                            </li>
+                                        </ul>
+                                        
+                                        <!-- Tab panes -->
+                                        <div class="tab-content">
+                                            <div id="body_color_tab1" class="container tab-pane active"><br>
+                                                <label>Choose Color</label>
+                                                <div>
+                                                    <input type="hidden" name="body_color" value='#3355cc' data-for="body" class="color-picker"/>
+                                                </div>
+                                            </div>
+                                            <div id="body_color_tab2" class="container tab-pane"><br>
+                                                <div class="row">
+                                                    <div class="col-sm-12 custom-bottom-border">
+                                                        <div>
+                                                            <button class="btn btn-dark" id="body_add_gradient">Add Gradient</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <label for="text-stroke-width">Color 1</label>
+                                                        <div>
+                                                            <input type="hidden" name="body_color" value='#3355cc' data-for="body" class="color-picker"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-9">
+                                                        <label for="text-stroke-width">&nbsp;</label>
+                                                        <div>
+                                                            <input type="range" value="1" min="0" max="10" class="custom-range" id="text-stroke-width">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <label for="text-stroke-width">Color 2</label>
+                                                        <div>
+                                                            <input type="hidden" name="body_color" value='#3355cc' data-for="body" class="color-picker"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-9">
+                                                        <label for="text-stroke-width">&nbsp;</label>
+                                                        <div>
+                                                            <input type="range" value="1" min="0" max="10" class="custom-range" id="text-stroke-width">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            <div id="body_color_tab3" class="container tab-pane"><br>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                            <div class="patternBox ">
+                                                                <button type="button" data-pattern-path="./images/digitalPattern1.svg" class="patternThumbs btn" data-id="1" style="background-image:url('./images/digital1.png'); background-size:cover; background-repeat: no-repeat;">
+                                                                </button>
+                                                            </div>
+                                                            <small>Digital</small>
+                                                    </div>
+                                                </div>
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 custom-bottom-border">
+                                        <h6>SHOULDER</h6>
+                                        <!-- Nav tabs -->
+                                        <ul class="nav nav-tabs nav-justified">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" data-toggle="tab" href="#shoulder_tab1">Solid</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#shoulder_tab2">Gradient</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#shoulder_tab3">Pattern</a>
+                                            </li>
+                                        </ul>
+                                        
+                                        <!-- Tab panes -->
+                                        <div class="tab-content">
+                                            <div id="shoulder_tab1" class="container tab-pane active"><br>
+                                                <labe>Choose Color</labe>
+                                                <div>
+                                                    <input type="hidden" name="shoulder" value='#3355cc' data-for="shoulder" class="color-picker"/>
+                                                </div>
+                                            </div>
+                                            <div id="shoulder_tab2" class="container tab-pane"><br>
+                                                ...
+                                            </div>
+                                            <div id="shoulder_tab3" class="container tab-pane fade"><br>
+                                                ...
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 custom-bottom-border">
+                                        <h6>NECK LINE</h6>
+                                        <!-- Nav tabs -->
+                                        <ul class="nav nav-tabs nav-justified">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" data-toggle="tab" href="#neck_line_tab1">Solid</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#neck_line_tab2">Gradient</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#neck_line_tab3">Pattern</a>
+                                            </li>
+                                        </ul>
+                                        
+                                        <!-- Tab panes -->
+                                        <div class="tab-content">
+                                            <div id="neck_line_tab1" class="container tab-pane active"><br>
+                                                <labe>Choose Color</labe>
+                                                <div>
+                                                    <input type="hidden" name="neck_line" value='#3355cc' data-for="neck_line" class="color-picker"/>
+                                                </div>
+                                            </div>
+                                            <div id="neck_line_tab2" class="container tab-pane"><br>
+                                                ...
+                                            </div>
+                                            <div id="neck_line_tab3" class="container tab-pane fade"><br>
+                                                ...
+                                            </div>
+
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-md-12 custom-bottom-border">
+                                        <h6>RIGHT SLEEVE</h6>
+                                        <!-- Nav tabs -->
+                                        <ul class="nav nav-tabs nav-justified">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" data-toggle="tab" href="#right_sleeve_tab1">Solid</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#right_sleeve_tab2">Gradient</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#right_sleeve_tab3">Pattern</a>
+                                            </li>
+                                        </ul>
+                                        
+                                        <!-- Tab panes -->
+                                        <div class="tab-content">
+                                            <div id="right_sleeve_tab1" class="container tab-pane active"><br>
+                                                <labe>Choose Color</labe>
+                                                <div>
+                                                    <input type="hidden" name="right_sleeve" value='#3355cc' data-for="right_sleeve" class="color-picker"/>
+                                                </div>
+                                            </div>
+                                            <div id="right_sleeve_tab2" class="container tab-pane"><br>
+                                               ...
+                                            </div>
+                                            <div id="right_sleeve_tab3" class="container tab-pane fade"><br>
+                                                ...
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 custom-bottom-border">
+                                        <h6>LEFT SLEEVE</h6>
+                                        <!-- Nav tabs -->
+                                        <ul class="nav nav-tabs nav-justified">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" data-toggle="tab" href="#left_sleeve_tab1">Solid</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#left_sleeve_tab2">Gradient</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#left_sleeve_tab3">Pattern</a>
+                                            </li>
+                                        </ul>
+                                        
+                                        <!-- Tab panes -->
+                                        <div class="tab-content">
+                                            <div id="left_sleeve_tab1" class="container tab-pane active"><br>
+                                                <labe>Choose Color</labe>
+                                                <div>
+                                                    <input type="hidden" name="left_sleeve" value='#3355cc' data-for="left_sleeve" class="color-picker"/>
+                                                </div>
+                                            </div>
+                                            <div id="left_sleeve_tab2" class="container tab-pane"><br>
+                                                ...
+                                            </div>
+                                            <div id="left_sleeve_tab3" class="container tab-pane fade"><br>
+                                                ...
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 custom-bottom-border">
+                                        <h6>RIGHT SIDE COM</h6>
+                                        <!-- Nav tabs -->
+                                        <ul class="nav nav-tabs nav-justified">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" data-toggle="tab" href="#right_side_com_tab1">Solid</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#right_side_com_tab2">Gradient</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#right_side_com_tab2">Pattern</a>
+                                            </li>
+                                        </ul>
+                                        
+                                        <!-- Tab panes -->
+                                        <div class="tab-content">
+                                            <div id="right_side_com_tab1" class="container tab-pane active"><br>
+                                                <labe>Choose Color</labe>
+                                                <div>
+                                                    <input type="hidden" name="right_side_com" value='#3355cc' data-for="right_side_com" class="color-picker"/>
+                                                </div>
+                                            </div>
+                                            <div id="right_side_com_tab2" class="container tab-pane"><br>
+                                                ...
+                                            </div>
+                                            <div id="right_side_com_tab2" class="container tab-pane fade"><br>
+                                                ...
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 custom-bottom-border">
+                                        <h6>LEFT SIDE COM</h6>
+                                        <!-- Nav tabs -->
+                                        <ul class="nav nav-tabs nav-justified">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" data-toggle="tab" href="#left_side_com_tab1">Solid</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#left_side_com_tab2">Gradient</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#left_side_com_tab2">Pattern</a>
+                                            </li>
+                                        </ul>
+                                        
+                                        <!-- Tab panes -->
+                                        <div class="tab-content">
+                                            <div id="left_side_com_tab1" class="container tab-pane active"><br>
+                                                <labe>Choose Color</labe>
+                                                <div>
+                                                    <input type="hidden" name="left_side_com" value='#3355cc' data-for="left_side_com" class="color-picker"/>
+                                                </div>
+                                            </div>
+                                            <div id="left_side_com_tab2" class="container tab-pane"><br>
+                                                ...
+                                            </div>
+                                            <div id="left_side_com_tab2" class="container tab-pane fade"><br>
+                                                ...
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 custom-bottom-border">
+                                        <h6>RIGHT CUFFS</h6>
+                                        <!-- Nav tabs -->
+                                        <ul class="nav nav-tabs nav-justified">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" data-toggle="tab" href="#right_cuffs_tab1">Solid</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#right_cuffs_tab2">Gradient</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#right_cuffs_tab2">Pattern</a>
+                                            </li>
+                                        </ul>
+                                        
+                                        <!-- Tab panes -->
+                                        <div class="tab-content">
+                                            <div id="right_cuffs_tab1" class="container tab-pane active"><br>
+                                                <labe>Choose Color</labe>
+                                                <div>
+                                                    <input type="hidden" name="right_cuffs" value='#3355cc' data-for="right_cuffs" class="color-picker"/>
+                                                </div>
+                                            </div>
+                                            <div id="right_cuffs_tab2" class="container tab-pane"><br>
+                                                ...
+                                            </div>
+                                            <div id="right_cuffs_tab2" class="container tab-pane fade"><br>
+                                                ...
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 custom-bottom-border">
+                                        <h6>LEFT CUFFS</h6>
+                                        <!-- Nav tabs -->
+                                        <ul class="nav nav-tabs nav-justified">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" data-toggle="tab" href="#left_cuffs_tab1">Solid</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#left_cuffs_tab2">Gradient</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#left_cuffs_tab2">Pattern</a>
+                                            </li>
+                                        </ul>
+                                        
+                                        <!-- Tab panes -->
+                                        <div class="tab-content">
+                                            <div id="left_cuffs_tab1" class="container tab-pane active"><br>
+                                                <labe>Choose Color</labe>
+                                                <div>
+                                                    <input type="hidden" name="left_cuffs" value='#3355cc' data-for="left_cuffs" class="color-picker"/>
+                                                </div>
+                                            </div>
+                                            <div id="left_cuffs_tab2" class="container tab-pane"><br>
+                                                ...
+                                            </div>
+                                            <div id="left_cuffs_tab2" class="container tab-pane fade"><br>
+                                                ...
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="text" role="tabpanel" aria-labelledby="text-tab">
+                            <div class="container mt-3">
+                                <div class="row">
+                                    <div class="col-md-12 custom-bottom-border">
+                                        <h6>TEXT</h6>
+                                    </div>
+                                    <div class="col-md-12 custom-bottom-border">
+                                        <button type="button" onclick="addNewText();" class="btn  btn-dark btn-block"><i class="fa fa-plus" aria-hidden="true"></i> Add Text</button>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-sm-3 custom-bottom-border">
+                                                <label>Text Color</label>
+                                                <div>
+                                                    <input type="hidden" name="text_color" value='#3355cc' data-for="text_color" class="text-color"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-9 custom-bottom-border">
+                                                <label for="font-family" style="display:inline-block">Font Family</label>
+                                                <select id="font-family" class="form-control">
+                                                    <option value="arial">Arial</option>
+                                                    <option value="helvetica" selected>Helvetica</option>
+                                                    <option value="myriad pro">Myriad Pro</option>
+                                                    <option value="delicious">Delicious</option>
+                                                    <option value="verdana">Verdana</option>
+                                                    <option value="georgia">Georgia</option>
+                                                    <option value="courier">Courier</option>
+                                                    <option value="comic sans ms">Comic Sans MS</option>
+                                                    <option value="impact">Impact</option>
+                                                    <option value="monaco">Monaco</option>
+                                                    <option value="optima">Optima</option>
+                                                    <option value="hoefler text">Hoefler Text</option>
+                                                    <option value="plaster">Plaster</option>
+                                                    <option value="engagement">Engagement</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <label for="text-font-size">Font Size</label>
+                                                <div>
+                                                    <input type="range" value="1" min="1" max="80" class="custom-range" id="text-font-size">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 custom-bottom-border">
+                                                <label for="text-bg-color">Background Text Color</label>
+                                                <div>
+                                                    <input type="hidden" name="text_bg_color" value='#3355cc' data-for="text_bg_color" class="text-color"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 custom-bottom-border">
+                                                <label for="text-stroke-color">Stroke Color</label>
+                                                <div>
+                                                    <input type="hidden" name="text_stroke_color" value='#3355cc' data-for="text_stroke_color" class="text-color"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 custom-bottom-border">
+                                                <label for="text-stroke-width">Stroke Width</label>
+                                                <div>
+                                                    <input type="range" value="1" min="0" max="10" class="custom-range" id="text-stroke-width">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="clipart" role="tabpanel" aria-labelledby="clipart-tab">
+                            <div class="container mt-3">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h2>Clipart</h2>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, eveniet earum. Sed accusantium eligendi molestiae quo hic velit nobis et, tempora placeat ratione rem blanditiis voluptates vel ipsam? Facilis, earum!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="image" role="tabpanel" aria-labelledby="image-tab">
+                            <div class="container mt-3">
+                                <div class="row">
+                                    <div class="col-md-12 custom-bottom-border">
+                                        <h6>Image</h6>
+                                    </div>
+                                    <div class="col-md-12 custom-bottom-border">
+                                        <div class="custom-file mt-3 mb-3">
+                                        <input type="file" class="custom-file-input" id="upload-images">
+                                        <label class="custom-file-label" for="upload-images">Select Image...</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 h-100" style="padding: 0; background-color: #343232;">
+                  
+                    <ul class="nav nav-pills flex-column" id="myTab" role="tablist">
+                            <li class="nav-item nav-item-side text-center">
+                                <a style="height: 80px" class="nav-link active" id="color-tab" data-toggle="tab" href="#color" role="tab" aria-controls="color" aria-selected="true">
+                                    <img src="./images/fill.svg" height="30px"  style=" margin-top: 10px"  />
+                                    <div style="font-size: 13px">
+                                        COLOR
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item nav-item-side text-center">
+                                <a style="height: 80px" class="nav-link" id="text-tab" data-toggle="tab" href="#text" role="tab" aria-controls="text" aria-selected="false">
+                                    <img src="./images/text.svg" height="30px"  style=" margin-top: 10px"  />
+                                    <div style="font-size: 13px">
+                                        TEXT
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item nav-item-side text-center">
+                                <a style="height: 80px" class="nav-link" id="clipart-tab" data-toggle="tab" href="#clipart" role="tab" aria-controls="clipart" aria-selected="false">
+                                    <img src="./images/clipart.svg" height="30px" style=" margin-top: 10px"  />
+                                    <div style="font-size: 13px">
+                                        <label>CLIPART</label>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item nav-item-side text-center">
+                                <a style="height: 80px" class="nav-link" id="image-tab" data-toggle="tab" href="#image" role="tab" aria-controls="image" aria-selected="false">
+                                    <img src="./images/image.svg" height="30px" style=" margin-top: 10px"  />
+                                    <div style="font-size: 13px">
+                                        IMAGE
+                                    </div>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+                
+                <div class="col-sm-12">
+                    <div class="py-4 text-white-50" style="background:#fff; bottom: 0; position: fixed; width: 100%; border-top: 1px solid #e2e2e2;">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <button class="btn btn-lg btn-dark">Save Design</button>
+                                    <button class="btn btn-lg btn-outline-dark">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-md-8 -->
+            </div>
+        </div> <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div class="float-right ml-4 text-center" style="height: 45px; background-color: #fff; width: 45px; padding: 15px;">
+            <a href="#menu-toggle" id="menu-toggle"><i class="fa fa-chevron-right"></i></a>
+        </div>
+
+        <div style="height: 45px; background-color: #343232; padding: 8px">
+            <div class="container-fluid">
+                <div class="form-inline float-right">
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <input type="checkbox" data-width="100px" data-on="<i class='fa fa-check-circle'></i>&nbsp;Grid" data-off="<i class='fa fa-ban'></i>&nbsp;Grid" data-toggle="toggle" data-size="sm">
+                            </div>
+                        </div> 
+                    <button  class="btn btn-light ml-2"><i class="fa fa-clone"></i></button>
+                    <!-- <button class="btn btn-light ml-2"><i class="fa fa-trash"></i></button> -->
+                    <button type="button" class="btn btn-light ml-2 btn-remove-object"><i class="fa fa-trash"></i></button>
+                </div>
+            </div>
+        </div>
+        <div id="page-content-wrapper" style="overflow-y: scroll; overflow-x: hidden;">
+                <div class="container" style="height: 75%;" >
+                    <div class="row" >
+                        <div class="col-md-1">    
+                            <div class="sides">
+                                <div class="side sides__item side_active" data-side="front">
+                                    <img src="./images/football-front-small.png" alt="Front" class="side__img">
+                                    <span class="side__price-label">FRONT</span>
+                                </div>
+                                <div class="side sides__item" data-side="back">
+                                    <img src="./images/football-back-small.png" alt="Back" class="side__img">
+                                    <span class="side__price-label">BACK</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-11">   
+                            <div style="height:auto">
+                                <div style="width:600px;height:600px;margin:0 auto;transform:scale(1)">
+                                    <canvas id="front_canvas"></canvas>
+                                    <div id="front_svg_visualizer" style="position:absolute;top:0;left:50%;transform:translate(-50%)">
+                                        <?xml version="1.0" encoding="utf-8"?>
+                                        <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                                        <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                            width="600px" height="600px" viewBox="0 0 600 600" enable-background="new 0 0 600 600" xml:space="preserve">
+                                        <g id="front_gradients">
+                                            <linearGradient id="front_body_gradients" gradientUnits="userSpaceOnUse" x1="0%" y1="100%" x2="0%" y2="0%"> 
+                                                <stop id="front_body_gradient2" offset="40%" stop-color="#FFFFFF"></stop>
+                                                <stop id="front_body_gradient1" offset="10%" stop-color="#000000"></stop>
+                                            </linearGradient>
+                                        </g>
+                                        <g id="Layer_4">
+                                                <defs>
+                                                <path id="front_body_clippath" d="M119.345,235.668c39.642-28.288,10.431-77.999-31.067-59.198
+                                                    C52.742,73.808,64.289,29.938,172.276,16.309c6.187-0.78,12.58-1.677,20.113-3.089c3.556-0.905,7.172-1.061,8.455-0.702
+                                                    c3.332,0.932,3.515,4.687,7.471,4.197c3.615-1.488,8.335-2.753,12.018-5.431c2.267-1.698,5.843-0.823,10.723,2.262
+                                                    c0.64,0.4,1.244,0.743,1.923,1.07c41.64,19.882,87.973,22.049,141.804-3.607c0.729-0.344,1.145-0.489,1.956-0.492
+                                                    c5.893,0.342,9.976,4.396,15.452,6c3.929-1.899,4.57-4.897,6.485-4.614c6.694,0.054,18.021,3.087,22.447,3.413
+                                                    c6.339,0.534,11.665,1.212,18.004,2.386c96.222,13.454,106.207,69.678,74.308,158.769
+                                                    c-40.889-19.305-70.723,29.106-31.067,59.198c0,0-4.794,19.217-11.031,31.944c0,0,0.413,7.893,0.55,17.939
+                                                    c0.142,10.045-5.415,40.015-6.793,45.321c-1.38,5.312-4.129,26.766-2.091,31.808c0.14,4.016,0.353,25.498-0.268,31.207
+                                                    c-0.617,5.712-6.174,19.705-7.339,25.49c-1.164,5.779,0.459,10.656,0.875,17.4c0.412,6.743,3.112,13.693,3.938,21.116
+                                                    c0.822,7.427-1.415,18.742-2.718,22.238c-1.305,3.501-1.713,16.777-1.305,19.137c0.413,2.355,2.361,18.429,2.361,19.283
+                                                    c0,0.856-0.653,4.969-4.496,8.967c-3.839,4-3.122,12.344-3.535,19.657c-0.232,7.358,0.81,24.811-0.293,26.96
+                                                    c-1.101,2.154-18.078,6.972-30.551,6.059c-10.503,2.305-38.549-4.06-66.187,5.432c-6.85,2.354-20.959-1.252-34.041,4.466
+                                                    l-35.243,0.442c-13.797-2.873-29.013-2.575-30.896-3.41c-3.855-1.721-8.102-4.751-12.511-5.184
+                                                    c-4.411-0.429-48.096-2.216-57.354-2.216c-9.758-1.081-19.323,2.175-32.204-5.96c-0.103-0.214-0.989-7.408-0.717-9.543
+                                                    c-0.136-0.56,0.025-6.433-0.103-12.639c-0.133-6.463-0.56-13.304-0.596-15.05c-0.07-3.429-1.862-8.998-4.055-10.427
+                                                    c-4.24-3.183-4.25-1.707-2.043-16.298c2.203-12.914,0.53-27.422,0.53-28.277c0-0.857-2.703-10.27-3.255-16.87
+                                                    c-0.24-2.87,0.733-8.035,0.4-12.39c-0.43-5.648,2.938-10.57,3.482-13.814c0.499-2.96,0.816-10.043-0.268-17.092
+                                                    c-1.021-6.619-3.393-13.172-4.953-17.523c-1.153-2.815-2.266-6.432-2.862-10.622c-0.672-4.708,0.905-10.103,0.666-14.859
+                                                    c-0.225-4.428,0.724-8.434,1.179-11.471c-0.389-10.419-0.466-20.28-1.461-29.305c-1.043-9.459-3.035-18.02-4.343-25.646
+                                                    c-7.941-31.474-1.295-35.666-4.145-41.143C126.317,260.354,122.273,244.2,119.345,235.668z"/>
+                                            </defs>
+                                            <clipPath id="front_body_clippath_1_">
+                                                <use xlink:href="#front_body_clippath"  overflow="visible"/>
+                                            </clipPath>
+                                            
+                                                <path id="front_body" clip-path="url(#front_body_clippath_1_)" fill="#F4F4F4" stroke="#807F7F" stroke-width="0.2015" stroke-miterlimit="2.613" d="
+                                                M119.345,235.668c39.642-28.288,10.431-77.999-31.067-59.198C52.742,73.808,64.289,29.938,172.276,16.309
+                                                c6.187-0.78,12.58-1.677,20.113-3.089c3.556-0.905,7.172-1.061,8.455-0.702c3.332,0.932,3.515,4.687,7.471,4.197
+                                                c3.615-1.488,8.335-2.753,12.018-5.431c2.267-1.698,5.843-0.823,10.723,2.262c0.64,0.4,1.244,0.743,1.923,1.07
+                                                c41.64,19.882,87.973,22.049,141.804-3.607c0.729-0.344,1.145-0.489,1.956-0.492c5.893,0.342,9.976,4.396,15.452,6
+                                                c3.929-1.899,4.57-4.897,6.485-4.614c6.694,0.054,18.021,3.087,22.447,3.413c6.339,0.534,11.665,1.212,18.004,2.386
+                                                c96.222,13.454,106.207,69.678,74.308,158.769c-40.889-19.305-70.723,29.106-31.067,59.198c0,0-4.794,19.217-11.031,31.944
+                                                c0,0,0.413,7.893,0.55,17.939c0.142,10.045-5.415,40.015-6.793,45.321c-1.38,5.312-4.129,26.766-2.091,31.808
+                                                c0.14,4.016,0.353,25.498-0.268,31.207c-0.617,5.712-6.174,19.705-7.339,25.49c-1.164,5.779,0.459,10.656,0.875,17.4
+                                                c0.412,6.743,3.112,13.693,3.938,21.116c0.822,7.427-1.415,18.742-2.718,22.238c-1.305,3.501-1.713,16.777-1.305,19.137
+                                                c0.413,2.355,2.361,18.429,2.361,19.283c0,0.856-0.653,4.969-4.496,8.967c-3.839,4-3.122,12.344-3.535,19.657
+                                                c-0.232,7.358,0.81,24.811-0.293,26.96c-1.101,2.154-18.078,6.972-30.551,6.059c-10.503,2.305-38.549-4.06-66.187,5.432
+                                                c-6.85,2.354-20.959-1.252-34.041,4.466l-35.243,0.442c-13.797-2.873-29.013-2.575-30.896-3.41
+                                                c-3.855-1.721-8.102-4.751-12.511-5.184c-4.411-0.429-48.096-2.216-57.354-2.216c-9.758-1.081-19.323,2.175-32.204-5.96
+                                                c-0.103-0.214-0.989-7.408-0.717-9.543c-0.136-0.56,0.025-6.433-0.103-12.639c-0.133-6.463-0.56-13.304-0.596-15.05
+                                                c-0.07-3.429-1.862-8.998-4.055-10.427c-4.24-3.183-4.25-1.707-2.043-16.298c2.203-12.914,0.53-27.422,0.53-28.277
+                                                c0-0.857-2.703-10.27-3.255-16.87c-0.24-2.87,0.733-8.035,0.4-12.39c-0.43-5.648,2.938-10.57,3.482-13.814
+                                                c0.499-2.96,0.816-10.043-0.268-17.092c-1.021-6.619-3.393-13.172-4.953-17.523c-1.153-2.815-2.266-6.432-2.862-10.622
+                                                c-0.672-4.708,0.905-10.103,0.666-14.859c-0.225-4.428,0.724-8.434,1.179-11.471c-0.389-10.419-0.466-20.28-1.461-29.305
+                                                c-1.043-9.459-3.035-18.02-4.343-25.646c-7.941-31.474-1.295-35.666-4.145-41.143C126.317,260.354,122.273,244.2,119.345,235.668z
+                                                "/>
+                                                <g id="front_body_pattern">
+                                                    </g>
+                                        </g>
+                                        <path id="front_right_side_com" fill="#F4F4F4" stroke="#807F7F" stroke-width="0.2015" stroke-miterlimit="2.613" d="
+                                            M122.067,244.555c10.451-4.563,21.005-9.946,23.889-15.385c18.397,121.264,24.03,236.687,26.122,350.339
+                                            c-6.236-0.042-12.91-0.731-20.841-5.742c-0.103-0.214-0.99-7.408-0.717-9.543c-0.135-0.56,0.026-6.433-0.102-12.639
+                                            c-0.134-6.463-0.56-13.304-0.596-15.05c-0.069-3.428-1.862-8.998-4.055-10.426c-4.24-3.183-4.25-1.708-2.043-16.298
+                                            c2.203-12.914,0.53-27.422,0.53-28.278c0-0.857-2.703-10.269-3.255-16.87c-0.24-2.87,0.733-8.035,0.401-12.389
+                                            c-0.431-5.649,2.938-10.571,3.481-13.817c0.499-2.958,0.817-10.041-0.267-17.09c-1.021-6.619-3.393-13.172-4.954-17.523
+                                            c-1.153-2.816-2.266-6.432-2.861-10.622c-0.672-4.708,0.905-10.103,0.666-14.86c-0.225-4.427,0.724-8.433,1.178-11.47
+                                            c-0.389-10.419-0.466-20.281-1.461-29.305c-1.043-9.459-3.035-18.019-4.343-25.646c-7.941-31.475-1.295-35.666-4.145-41.143
+                                            C126.997,263.342,124.453,252.981,122.067,244.555z"/>
+                                        <path id="front_left_side_com" fill="#F4F4F4" stroke="#807F7F" stroke-width="0.2015" stroke-miterlimit="2.613" d="
+                                            M455.745,229.064c3.563,6.72,13.825,13.852,22.986,19.271c-1.935,6.119-4.51,13.392-7.395,19.276c0,0,0.413,7.893,0.55,17.939
+                                            c0.141,10.045-5.415,40.014-6.792,45.321c-1.381,5.312-4.128,26.766-2.092,31.808c0.14,4.015,0.353,25.498-0.268,31.207
+                                            c-0.617,5.712-6.173,19.707-7.338,25.49c-1.165,5.779,0.459,10.656,0.875,17.4c0.412,6.743,3.112,13.694,3.937,21.117
+                                            c0.822,7.426-1.415,18.742-2.718,22.238c-1.304,3.501-1.713,16.777-1.304,19.137c0.413,2.355,2.361,18.428,2.361,19.283
+                                            c0,0.856-0.653,4.969-4.496,8.967c-3.839,4-3.122,12.343-3.535,19.657c-0.233,7.358,0.809,24.81-0.292,26.96
+                                            c-0.838,1.635-10.857,4.814-21.095,5.844C431.219,466.175,437.323,350.499,455.745,229.064z"/>
+                                        <path id="front_right_sleeve" fill="#F4F4F4" stroke="#807F7F" stroke-width="0.216" stroke-miterlimit="2.6131" d="M78.822,58.494
+                                            c36.039,20.471,58.16,61.752,59.208,108.177c-18.648-15.85-38.313-11.098-54.586-5.524C70.812,127.708,63.614,82.709,78.822,58.494z
+                                            "/>
+                                        <path id="front_left_sleeve" fill="#F4F4F4" stroke="#807F7F" stroke-width="0.216" stroke-miterlimit="2.6131" d="M518.266,161.146
+                                            c-18.828-8.202-41.878-8.26-57.8,8.673c2.803-44.961,23.973-90.321,58.112-112.401C537.001,84.556,529.588,128.876,518.266,161.146z
+                                            "/>
+                                        <path id="front_shoulder" fill="#F4F4F4" stroke="#807F7F" stroke-width="0.216" stroke-miterlimit="2.6131" d="M518.57,57.425
+                                            c-13.119-20.492-38.451-33.991-79.443-39.724c-6.339-1.174-11.665-1.852-18.005-2.386c-4.428-0.324-15.751-3.357-22.445-3.413
+                                            c-1.916-0.281-2.558,2.715-6.486,4.614c-5.476-1.602-9.562-5.657-15.452-6c-0.813,0.005-1.228,0.148-1.957,0.494
+                                            c-53.832,25.655-100.163,23.488-141.803,3.605c-0.68-0.327-1.282-0.668-1.922-1.07c-4.881-3.084-8.457-3.959-10.723-2.261
+                                            c-3.683,2.677-8.401,3.943-12.019,5.432c-3.957,0.489-4.14-3.268-7.47-4.198c-1.284-0.36-4.9-0.205-8.457,0.701
+                                            c-7.531,1.412-13.925,2.311-20.112,3.089c-50.726,6.402-80.169,19.479-93.451,42.187c29.594,17.12,52.307,46.916,58.547,96.898
+                                            l324.943-0.069C467.819,118.535,484.911,79.79,518.57,57.425z"/>
+                                        <path id="front_neck_line" fill="#F4F4F4" stroke="#807F7F" stroke-width="0.25" stroke-miterlimit="2.6131" d="M300.681,143.02
+                                            c40.287-11.578,89.909-67.04,102.125-117.691c-6.088-8.314-21.938-13.955-26.696-15.03c-49.035,23.123-96.526,29.014-153.007-0.833
+                                            c-6.784,4.521-22.526,10.253-23.845,13.924C204.913,63.798,248.967,122.956,300.681,143.02z"/>
+                                        <path id="front_right_cuffs" fill="#F4F4F4" stroke="#807F7F" stroke-width="0.216" stroke-miterlimit="2.6131" d="M123.966,251.523
+                                            l-4.619-15.855c38.424-26.709,12.031-78.551-31.069-59.198l-4.833-15.323C150.604,133.811,180.742,219.512,123.966,251.523z"/>
+                                        <path id="front_left_cuffs" fill="#F4F4F4" stroke="#807F7F" stroke-width="0.216" stroke-miterlimit="2.6131" d="M477.747,251.523
+                                            l4.619-15.855c-38.425-26.709-12.031-78.551,31.068-59.198l4.831-15.323C451.108,133.811,420.971,219.512,477.747,251.523z"/>
+                                        <path fill="#F4F4F4" stroke="#807F7F" stroke-width="0.216" stroke-miterlimit="2.6131" d="M376.866,33.326
+                                            c-44.501,24.191-94.96,24.604-150.625,4.237c14.539,29.943,42.585,65.155,73.946,77.845
+                                            C334.271,104.312,356.63,79.098,376.866,33.326z"/>
+                                        </svg>
+
+                                    </div>
+                                    
+                                </div>
+                                <div style="width:600px;height:600px;margin:0 auto;transform:scale(1)">
+                                    <canvas id="back_canvas"></canvas>
+                                    <div id="back_svg_visualizer" style="position:absolute;top:0;left:50%;transform:translate(-50%)">
+                                        <?xml version="1.0" encoding="utf-8"?>
+                                        <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                                        <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                width="600px" height="600px" viewBox="0 0 600 600" enable-background="new 0 0 600 600" xml:space="preserve">
+                                        <g id="back_gradients">
+                                            <linearGradient id="back_body_gradients" gradientUnits="userSpaceOnUse" x1="0%" y1="100%" x2="0%" y2="0%"> 
+                                                <stop id="back_body_gradient2" offset="40%" stop-color="#FFFFFF"></stop>
+                                                <stop id="back_body_gradient1" offset="10%" stop-color="#000000"></stop>
+                                            </linearGradient>
+                                        </g>
+                                        <g id="Layer_3">
+                                            
+                                                <defs>
+                                                    <path id="back_body_clippath" d="M120.577,235.659c1.972,6.772,2.296,7.887,5.793,19.264c0.639,2.233,3.071,13.891,2.888,15.687
+                                                        c-2.263,22.36,0.271,25.429,4.634,42.523c3.127,14.972,4.754,34.369,5.596,47.006c0.24,3.593-2.867,19.216-1.811,29.183
+                                                        c0.608,5.744,2.18,8.26,2.417,9c3.826,9.789,6.282,19.992,6.177,30.86c-1.642,7.804-3.639,13.248-3.914,19.683
+                                                        c-0.217,5.094-0.647,9.932-0.171,14.375c0.524,4.944,2.114,9.287,2.925,14.182c0.658,3.955,0.612,8.402,0.691,12.914
+                                                        c0.136,7.621-1.39,19.17-2.581,28.74c-0.043,1.262-0.118,2.219,0.888,2.899c11.378,6.783,4.991,31.906,7.723,46.607
+                                                        c0.16,1.307,0.095,1.576,1.185,2.262c5.211,3.285,21.665,5.515,33.091,6.181c19.05,1.112,36.498,1.143,62.869,8.549
+                                                        c4.874,1.367,12.221,2.664,17.195,2.975c7.217,0.703,13.805,1.492,19.879,1.494l29.869,0.012
+                                                        c28.502,0.017,41.523-8.151,64.037-9.514c36.395-3.842,65.441-3.358,69.02-11.238c0.479-5.633,0.683-12.745,0.806-21.396
+                                                        c0.162-11.34-0.148-23.955,7.875-29.127c-2.547-16.721-3.949-34.33-0.933-43.771c2.957-7.069,1.947-16.021,1.939-24.274
+                                                        c-0.002-4.982-3.766-9.387-3.496-14.096c0.256-4.546-1.633-9.425-1.291-13.81c0.871-13.172,5.965-21.639,7.711-29.758
+                                                        c2.35-10.898,1.244-21.607,0.32-46.379c-0.131-3.637,0.412-6.408,1.104-10.043c5.299-27.992,9.392-50.397,7.789-70.576
+                                                        c5.512-7.695,7.318-21.65,10.318-30.413c-39.355-28.895-9.563-78.019,30.272-59.191c32.441-81.604,21.14-135.596-53.438-155.216
+                                                        c-19.053-5.013-35.598-4.707-47.271-7.983c-5.145-2.743-9.934-5.196-18.568,3.555c-0.766,0.71-2.461,0.155-3.196-0.169
+                                                        c-5.981-2.64-11.121-9.43-17-4.506C312.9,40.879,262.821,29.746,228.38,12.077c-2.372-1.877-4.471-2.111-6.648-1.204
+                                                        c-1.32,0.553-2.541,1.493-3.714,2.476c-2.117,1.78-4.58,3.13-7.484,4.132c-0.664,0.23-0.891,0.141-1.53-0.203
+                                                        c-3.678-1.337-4.724-4.671-7.901-5.163c-4.295-0.665-11.263,1.802-18.006,2.475c-13.595,1.358-29.103,3.381-43.55,7.682
+                                                        c-6.463,1.925-13.054,4.005-18.798,6.433c-6.632,2.802-12.25,5.959-17.065,8.11C60.286,63.2,66.302,110.803,89.045,176.761
+                                                        C130.574,156.835,159.902,207.757,120.577,235.659z"/>
+                                                </defs>
+                                                <clipPath id="back_body_clippath_1_">
+                                                    <use xlink:href="#back_body_clippath"  overflow="visible"/>
+                                                </clipPath>
+                                                
+                                                    <path id="back_body" clip-path="url(#back_body_clippath_1_)" fill="#F4F4F4" stroke="#807F7F" stroke-width="0.2015" stroke-miterlimit="2.613" d="
+                                                    M120.577,235.659c1.972,6.772,2.296,7.887,5.793,19.264c0.639,2.233,3.071,13.891,2.888,15.687
+                                                    c-2.263,22.36,0.271,25.429,4.634,42.523c3.127,14.972,4.754,34.369,5.596,47.006c0.24,3.593-2.867,19.216-1.811,29.183
+                                                    c0.608,5.744,2.18,8.26,2.417,9c3.826,9.789,6.282,19.992,6.177,30.86c-1.642,7.804-3.639,13.248-3.914,19.683
+                                                    c-0.217,5.094-0.647,9.932-0.171,14.375c0.524,4.944,2.114,9.287,2.925,14.182c0.658,3.955,0.612,8.402,0.691,12.914
+                                                    c0.136,7.621-1.39,19.17-2.581,28.74c-0.043,1.262-0.118,2.219,0.888,2.899c11.378,6.783,4.991,31.906,7.723,46.607
+                                                    c0.16,1.307,0.095,1.576,1.185,2.262c5.211,3.285,21.665,5.515,33.091,6.181c19.05,1.112,36.498,1.143,62.869,8.549
+                                                    c4.874,1.367,12.221,2.664,17.195,2.975c7.217,0.703,13.805,1.492,19.879,1.494l29.869,0.012
+                                                    c28.502,0.017,41.523-8.151,64.037-9.514c36.395-3.842,65.441-3.358,69.02-11.238c0.479-5.633,0.683-12.745,0.806-21.396
+                                                    c0.162-11.34-0.148-23.955,7.875-29.127c-2.547-16.721-3.949-34.33-0.933-43.771c2.957-7.069,1.947-16.021,1.939-24.274
+                                                    c-0.002-4.982-3.766-9.387-3.496-14.096c0.256-4.546-1.633-9.425-1.291-13.81c0.871-13.172,5.965-21.639,7.711-29.758
+                                                    c2.35-10.898,1.244-21.607,0.32-46.379c-0.131-3.637,0.412-6.408,1.104-10.043c5.299-27.992,9.392-50.397,7.789-70.576
+                                                    c5.512-7.695,7.318-21.65,10.318-30.413c-39.355-28.895-9.563-78.019,30.272-59.191c32.441-81.604,21.14-135.596-53.438-155.216
+                                                    c-19.053-5.013-35.598-4.707-47.271-7.983c-5.145-2.743-9.934-5.196-18.568,3.555c-0.766,0.71-2.461,0.155-3.196-0.169
+                                                    c-5.981-2.64-11.121-9.43-17-4.506C312.9,40.879,262.821,29.746,228.38,12.077c-2.372-1.877-4.471-2.111-6.648-1.204
+                                                    c-1.32,0.553-2.541,1.493-3.714,2.476c-2.117,1.78-4.58,3.13-7.484,4.132c-0.664,0.23-0.891,0.141-1.53-0.203
+                                                    c-3.678-1.337-4.724-4.671-7.901-5.163c-4.295-0.665-11.263,1.802-18.006,2.475c-13.595,1.358-29.103,3.381-43.55,7.682
+                                                    c-6.463,1.925-13.054,4.005-18.798,6.433c-6.632,2.802-12.25,5.959-17.065,8.11C60.286,63.2,66.302,110.803,89.045,176.761
+                                                    C130.574,156.835,159.902,207.757,120.577,235.659z"/>
+                                           
+                                            <g id="back_body_pattern">
+                                            </g>
+                                        </g>
+                                        
+                                        <path id="back_right_side_com" fill="#F4F4F4" stroke="#807F7F" stroke-width="0.2015" stroke-miterlimit="2.613" d="
+                                            M454.596,227.411c-18.316,120.724-24.395,235.729-26.475,348.868c11.504-1.332,19.129-3.186,20.855-6.979
+                                            c0.479-5.633,0.682-12.746,0.805-21.396c0.162-11.34-0.148-23.955,7.877-29.127c-2.549-16.721-3.951-34.33-0.934-43.77
+                                            c2.957-7.07,1.947-16.021,1.939-24.275c-0.002-4.982-3.766-9.387-3.496-14.096c0.256-4.545-1.633-9.424-1.291-13.809
+                                            c0.871-13.172,5.967-21.639,7.711-29.758c2.35-10.898,1.244-21.607,0.32-46.379c-0.131-3.637,0.412-6.408,1.104-10.043
+                                            c5.299-27.992,9.391-50.397,7.789-70.576c3.883-5.421,5.926-13.943,7.844-21.573C468.635,239.562,457.805,233.462,454.596,227.411z"
+                                            />
+                                        <path id="back_left_side_com" fill="#F4F4F4" stroke="#807F7F" stroke-width="0.2015" stroke-miterlimit="2.613" d="
+                                            M173.373,575.822c-2.076-113.238-7.523-225.213-25.854-346.044c-4.507,8.501-14.303,15.34-22.512,20.696l1.365,4.449
+                                            c0.64,2.233,3.071,13.891,2.888,15.688c-2.263,22.358,0.271,25.427,4.632,42.523c3.13,14.971,4.756,34.369,5.599,47.006
+                                            c0.237,3.59-2.87,19.215-1.812,29.182c0.606,5.744,2.178,8.258,2.415,8.998c3.826,9.789,6.282,19.992,6.18,30.863
+                                            c-1.643,7.801-3.64,13.25-3.917,19.68c-0.217,5.094-0.646,9.932-0.171,14.375c0.524,4.945,2.116,9.289,2.925,14.184
+                                            c0.658,3.955,0.612,8.402,0.691,12.914c0.136,7.619-1.388,19.168-2.579,28.74c-0.045,1.262-0.118,2.217,0.888,2.9
+                                            c11.376,6.781,4.991,31.906,7.721,46.607c0.16,1.305,0.095,1.576,1.185,2.262c3.437,2.164,11.757,3.871,20.301,4.973
+                                            L173.373,575.822z"/>
+                                        <path id="back_right_sleeve" fill="#F4F4F4" stroke="#807F7F" stroke-width="0.216" stroke-miterlimit="2.6131" d="M516.988,58.671
+                                            c-33.965,21.964-55.07,66.42-57.859,111.151c15.838-16.845,39.025-16.251,57.758-8.092
+                                            C528.15,129.628,535.314,85.671,516.988,58.671z"/>
+                                        <path id="back_left_sleeve" fill="#F4F4F4" stroke="#807F7F" stroke-width="0.216" stroke-miterlimit="2.6131" d="M84.074,161.73
+                                            c16.19-5.543,36.951-10.008,55.651,6.487c-1.044-46.185-23.163-88.464-59.017-108.832C65.58,83.479,72.374,127.594,84.074,161.73z"
+                                            />
+                                        <path id="back_shoulder" fill="#F4F4F4" stroke="#807F7F" stroke-width="0.216" stroke-miterlimit="2.6131" d="M80.708,59.387
+                                            C93.01,35.643,132.215,19.281,184.82,14.375c9.331-1.823,13.798-2.841,16.569-2.214c3.271,0.744,4.203,3.477,8.361,5.426
+                                            c52.865,39.064,122.052,39.319,181.447-0.425c6.24-6.698,12.736-8.007,19.49-3.899c3.654,1.149,7.551,1.845,11.25,2.157
+                                            c46.979,3.939,78.582,17.688,95.051,43.252c-28.836,19.88-47.383,49.965-55.281,90.621l-323.608,0.004
+                                            C129.775,101.803,107.427,75.005,80.708,59.387z"/>
+                                        <path id="back_neck_line" fill="#F4F4F4" stroke="#807F7F" stroke-width="0.25" stroke-miterlimit="2.6131" d="M209.857,17.502
+                                            c9.633-2.198,11.637-11.729,18.626-5.439c42.879,21.187,88.556,25.574,143.529-0.049c7.35-5.867,14.721,6.018,20.107,5.11
+                                            C336.449,56.724,257.206,56.587,209.857,17.502z"/>
+                                        <path id="back_left_cuffs" fill="#F4F4F4" stroke="#807F7F" stroke-width="0.216" stroke-miterlimit="2.6131" d="M125.044,251.429
+                                            l-4.598-15.774c38.23-26.572,11.483-78.15-31.395-58.896l-4.979-15.027C150.886,134.535,181.529,219.58,125.044,251.429z"/>
+                                        <path id="back_right_cuffs" fill="#F4F4F4" stroke="#807F7F" stroke-width="0.216" stroke-miterlimit="2.6131" d="M476.809,251.608
+                                            l3.813-15.954c-37.154-27.356-11.682-78.362,30.908-58.896l4.807-15.245C449.52,134.316,420.324,219.761,476.809,251.608z"/>
+                                        </svg>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div> 
+            </div>
+        </div> <!-- /#page-content-wrapper -->
+        <!-- <footer id="sticky-footer" class="py-2 text-white-50">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <button class="btn btn-lg btn-dark">Save Design</button>
+                        <button class="btn btn-lg btn-outline-dark">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </footer> -->
+    </div> <!-- /#wrapper -->
+    <!-- Bootstrap core JavaScript -->
+    
+    <script>
+        var activeCanvas, _front_canvas, _back_canvas, activeView, getSides;
+
+        var request = new XMLHttpRequest();
+        request.open("GET", "./data.json", false);
+        request.send(null)
+        var json_data = JSON.parse(request.responseText);
+        // console.log(json_data.styles.sides);
+        getSides = json_data.styles.sides;
+        
+      $(function(){
+       
+        _front_canvas = new fabric.Canvas('front_canvas');
+        _front_canvas.setHeight(600);
+        _front_canvas.setWidth(600);
+        _front_canvas.setOverlayImage('./images/football-front.png', _front_canvas.renderAll.bind(_front_canvas));
+        initCenteringGuidelines(_front_canvas);
+        initAligningGuidelines(_front_canvas);
+
+        _back_canvas = new fabric.Canvas('back_canvas');
+        _back_canvas.setHeight(600);
+        _back_canvas.setWidth(600);
+        _back_canvas.setOverlayImage('./images/football-back.png', _back_canvas.renderAll.bind(_back_canvas));
+        initCenteringGuidelines(_back_canvas);
+        initAligningGuidelines(_back_canvas);
+        changeView('front');
+        
+        // var rect   = new fabric.Rect ( { top: 0, left: 0, width: 40 , height:30, fill: '#f55'  ,  opacity: 0.7});
+	    // canvas.add(rect);
+
+        // var canvas = this.__canvas = new fabric.Canvas ('c');
+        // canvas.setHeight(600);
+        // canvas.setWidth(937.5);
+
+        // canvas.setBackgroundImage('background-football.png', canvas.renderAll.bind(canvas), { width: 937.5, height: 600 });
+        
+        // var text = new fabric.Text('Hello', { left: 100, top: 100, fill: 'blue', });
+        // canvas.add(text);
+
+        $('.side').click(function(e) {
+
+            changeView($(this).data('side'));
+
+            $('.side').removeClass('side_active');
+            $(this).addClass('side_active');
+
+        })
+
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+            if($(this).children().hasClass('fa-chevron-right')){
+                $(this).children().removeClass('fa-chevron-right').addClass('fa-chevron-left')
+            }else{
+                $(this).children().removeClass('fa-chevron-left').addClass('fa-chevron-right')
+            }
+        });
+
+        $(window).resize(function(e) {
+          if($(window).width()<=768){
+            $("#wrapper").removeClass("toggled");
+          }else{
+            $("#wrapper").addClass("toggled");
+          }
+        });
+
+        document.getElementById('font-family').onchange = function() {
+            activeCanvas.getActiveObject().setFontFamily(this.value);
+            activeCanvas.renderAll();
+        };
+        
+        document.getElementById('text-font-size').onchange = function() {
+            activeCanvas.getActiveObject().setFontSize(this.value);
+            activeCanvas.renderAll();
+        };
+
+        document.getElementById('text-stroke-width').onchange = function() {
+            activeCanvas.getActiveObject().setStrokeWidth(this.value);
+            activeCanvas.renderAll();
+        };
+
+        $(document).on('button click', '.btn-remove-object', function() {
+            var object = activeCanvas.getActiveObject();
+            if (!object){
+                alert('Please select the object to remove');
+                return '';
+            }
+            activeCanvas.remove(object);
+        });
+
+        document.getElementById('upload-images').onchange = function handleImage(e) {
+            // console.log(event);
+            var reader = new FileReader();
+            reader.onload = function (event) {
+                
+                var imgObj = new Image();
+                
+                imgObj.src = event.target.result;
+                // console.log(event.target.result);
+                imgObj.onload = function () {
+                    // start fabricJS stuff
+                    var image = new fabric.Image(imgObj);
+                    // console.log(image);
+                    image.set({
+                        top:0,
+                        left:0,
+                        borderColor: '#71b7f3',
+                        cornerColor: '#71b7f3',
+                        opacity: 10,
+                        cornerSize: 10,
+                        transparentCorners: false,
+                        hasControls: true,
+                        lockScalingFlip: true,
+                        cache: false,
+                        crossOrigin : 'anonymous'
+                        // width: 15.6
+
+                    }).scale(0.1);
+                    //image.scale(getRandomNum(0.1, 0.25)).setCoords();
+
+                    activeCanvas.centerObject(image);
+                    activeCanvas.add(image);
+                    activeCanvas.renderAll(image);
+                    activeCanvas.setActiveObject(image);
+                    image.bringToFront();
+                    image.center();
+                    image.setCoords();
+                    $('#upload-images').val("");
+                }
+
+            }
+
+            //console.log(e.target.files[0]);
+            reader.readAsDataURL(e.target.files[0]);
+
+        }
+
+        $(document).on('button click', '#body_add_gradient', function() {
+            getSides.forEach(function(element) {
+                document.getElementById(element + "_body").setAttribute("fill", "url(#"+element+"_body_gradients)");
+            });
+        });
+
+        $(document).on('button click', '.patternThumbs', function(){
+
+            var patternSVGPath = $(this).attr('data-pattern-path');
+
+            // var patternPath =  "{{ config('site_config.uploads') }}" + patternSVGPath; 
+
+            getSides.forEach(function(element) {
+                // document.getElementById(element + "_" +  e.target.getAttribute('data-for')).setAttribute("fill", getHexColor);
+                var urlClippath = "url(#"+ element +"_body_clippath_1_)"; 
+                var svgpatternidVal = element + "_body_pattern";
+                var objectId = null;
+                var TypeAndSide =  element;
+                loadPattern(patternSVGPath, urlClippath, svgpatternidVal, objectId, TypeAndSide);
+            });
+
+            // for (var i = 0; i < SideAndPath.length; i++) {
+            //     var sideName = SideAndPath[i]['Side'];
+            //     var type = SideAndPath[i]['Type'];
+
+            //     var mainColorId = type + "_" + sideName + "_" + "Color";
+              
+            //     var objectId = "objSVG_" + type + "_" + sideName;
+            //     var svgpatternidVal = mainColorId + "_Pattern";
+            //     var TypeAndSide =  type + "_" + sideName;
+
+            //     if(patternSVGPath == ""){
+            //         var a = document.getElementById(objectId);
+            //         var svgDoc = a.contentDocument;
+            //         try{
+            //             document.getElementById(svgpatternidVal).innerHTML = "";
+            //         }catch(e){
+            //             //console.log(e);
+            //         }
+            //     }else{
+                    
+            //     }
+                
+                
+            // }
+
+            var getId = $(this).attr('data-id');
+
+            // $.ajax({    //create an ajax request to load_page.php
+
+            //     type: "POST",
+            //     url: "{{url('designer/a/set-pattern')}}",
+            //     dataType: "html",   //expect html to be returned
+            //     data: {
+            //         patternId : getId
+            //     },
+            //     beforeSend:function(xhr){
+            //         var token = $('meta[name="csrf_token"]').attr('content');
+
+            //             if (token) {
+            //                 return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            //             }
+            //             xhr.setRequestHeader( 'X-Requested-With',  'XMLHttpRequest');
+            //     },
+            //     success: function(response){
+
+            //         if(getId != 'noPattern'){
+
+            //             $("#patternColorChoices").hide().html(response).fadeIn("slow");
+
+            //                 loadPatternColor();
+            //                 colorPickerCustom();
+
+
+            //         }else{
+            //                 $("#patternColorChoices").html(response);
+            //                 //backToNoPattern();
+
+            //         }
+            //     }
+            // });
+
+            // $(".patternThumbs").attr("disabled", false);
+            // $(".patternThumbs").html('').fadeIn("slow");
+            // $(this).attr("disabled", true);
+            // $(this).html('<i class="fa fa-2 fa-check" aria-hidden="true"></i>');
+
+            // $("#body-pattern-color-type").val("Solid");
+
+        });
+
+        $(".color-picker, .text-color").spectrum({
+            color: "rgb(255, 255, 255)",
+            showInput: true,
+            className: "full-spectrum",
+            showInitial: true,
+            showPalette: true,
+            showSelectionPalette: true,
+            maxSelectionSize: 4,
+            preferredFormat: "rgb",
+            localStorageKey: "spectrum.demo",
+            "palette": [
+                ["rgb(38, 38, 38)", "rgb(102, 102, 102)", "rgb(68, 69, 79)", "rgb(255, 255, 255)"],
+                ["rgb(77, 20, 8)", "rgb(0, 75, 43)", "rgb(0, 135, 81)", "rgb(0, 111, 175)"],
+                ["rgb(0, 95, 111)", "rgb(16, 34, 64)", "rgb(66, 128, 206)", "rgb(17, 43, 155)"],
+                ["rgb(64, 18, 129)", "rgb(116, 0, 36)", "rgb(169, 30, 54)", "rgb(221, 117, 174)"],
+                ["rgb(214, 0, 2)", "rgb(51, 0, 0)", "rgb(255, 224, 27)", "rgb(255, 186, 0)"],
+                ["rgb(211, 198, 120)", "rgb(158, 64, 0)", "rgb(255, 64, 0)", "rgb(255, 112, 10)"]
+            ]
+        });
+
+        $(".text-color").on('move.spectrum', function(e, tinycolor) {
+            var getFor = e.target.getAttribute('data-for');
+            console.log(getFor)
+            var getHexColor = tinycolor.toHexString();
+            if(getFor == "text_color"){
+                
+                activeCanvas.getActiveObject().setFill(getHexColor);
+                activeCanvas.renderAll();
+            }
+
+            if(getFor == "text_bg_color"){
+                activeCanvas.getActiveObject().setTextBackgroundColor(getHexColor);
+                activeCanvas.renderAll();
+            }
+
+            if(getFor == "text_stroke_color"){
+                activeCanvas.getActiveObject().setStroke(getHexColor);
+                activeCanvas.getActiveObject().setStrokeWidth('1');
+                activeCanvas.renderAll();
+            }
+            
+        });
+
+        $(".text-color").on('show.spectrum', function(e, tinycolor) {
+            var getFor = e.target.getAttribute('data-for');
+            var getHexColor = tinycolor.toHexString();
+            if(getFor == "text_color"){
+                
+                activeCanvas.getActiveObject().setFill(getHexColor);
+                activeCanvas.renderAll();
+            }
+
+            if(getFor == "text_bg_color"){
+                activeCanvas.getActiveObject().setTextBackgroundColor(getHexColor);
+                activeCanvas.renderAll();
+            }
+
+            if(getFor == "text_stroke_color"){
+                activeCanvas.getActiveObject().setStroke(getHexColor);
+                activeCanvas.renderAll();
+            }
+        });
+
+        $(".text-color").on('hide.spectrum', function(e, tinycolor) {
+            var getFor = e.target.getAttribute('data-for');
+            var getHexColor = tinycolor.toHexString();
+            if(getFor == "text_color"){
+               
+                activeCanvas.getActiveObject().setFill(getHexColor);
+                activeCanvas.renderAll();
+            }
+
+            if(getFor == "text_bg_color"){
+                activeCanvas.getActiveObject().setTextBackgroundColor(getHexColor);
+                activeCanvas.renderAll();
+            }
+
+            if(getFor == "text_stroke_color"){
+                activeCanvas.getActiveObject().setStroke(getHexColor);
+                activeCanvas.renderAll();
+            }
+        });
+
+
+        $(".text-color").on('beforeShow.spectrum', function(e, tinycolor) {
+            var getFor = e.target.getAttribute('data-for');
+            var getHexColor = tinycolor.toHexString();
+            if(getFor == "text_color"){
+                
+                activeCanvas.getActiveObject().setFill(getHexColor);
+                activeCanvas.renderAll();
+            }
+
+            if(getFor == "text_bg_color"){
+                activeCanvas.getActiveObject().setTextBackgroundColor(getHexColor);
+                activeCanvas.renderAll();
+            }
+
+            if(getFor == "text_stroke_color"){
+                activeCanvas.getActiveObject().setStroke(getHexColor);
+                activeCanvas.renderAll();
+            }
+        });
+       
+        $(".color-picker").on('move.spectrum', function(e, tinycolor) { 
+            var getHexColor = tinycolor.toHexString();
+            
+            getSides.forEach(function(element) {
+                document.getElementById(element + "_" +  e.target.getAttribute('data-for')).setAttribute("fill", getHexColor);
+            });
+
+            if(e.target.getAttribute('data-for') == "text_color"){
+                activeCanvas.getActiveObject().setFill(getHexColor);
+                activeCanvas.renderAll();
+            }
+        });
+        $(".color-picker").on('show.spectrum', function(e, tinycolor) { 
+            var getHexColor = tinycolor.toHexString();
+            getSides.forEach(function(element) {
+                document.getElementById(element + "_" +  e.target.getAttribute('data-for')).setAttribute("fill", getHexColor);
+            });
+
+            if(e.target.getAttribute('data-for') == "text_color"){
+                activeCanvas.getActiveObject().setFill(getHexColor);
+                activeCanvas.renderAll();
+            }
+        });
+        $(".color-picker").on('hide.spectrum', function(e, tinycolor) {
+            var getHexColor = tinycolor.toHexString();
+            getSides.forEach(function(element) {
+                document.getElementById(element + "_" +  e.target.getAttribute('data-for')).setAttribute("fill", getHexColor);
+            });
+
+            if(e.target.getAttribute('data-for') == "text_color"){
+                activeCanvas.getActiveObject().setFill(getHexColor);
+                activeCanvas.renderAll();
+            }
+        });      
+        $(".color-picker").on('beforeShow.spectrum', function(e, tinycolor) { 
+            var getHexColor = tinycolor.toHexString();
+            getSides.forEach(function(element) {
+                document.getElementById(element + "_" +  e.target.getAttribute('data-for')).setAttribute("fill", getHexColor);
+            });
+
+            
+        });
+        colorPickerCustom();
+      });
+      
+    function colorPickerCustom(){
+        $('.sp-replacer').css({
+            'padding':'0px',
+            'height':'calc(1.5em + .75rem + 2px)',
+            'width':'calc(1.5em + .75rem + 2px)',
+            'radius': '2px',
+            'border-radius' : '.25rem'
+            
+        });
+
+        $('.sp-preview').css({
+            'width':'calc(1.5em + .75rem + 2px)',
+            'height':'calc(1.5em + .75rem + 2px)',
+            'border':'none'
+        });
+        $('.sp-dd').css({
+            'display':'none'
+        });
+
+        $('.sp-input-container').css({
+            'float': 'left',
+            'width':'100%'
+        });
+        
+        $('.sp-palette-button-container').css({
+            'padding-top': '10px',
+        });
+
+        $('.sp-button-container').css({
+            'padding-top': '10px',
+        });
+        
+    }
+
+    function changeView(value) {
+
+        activeView = value;
+        if (value == "front") {
+            activeCanvas = _front_canvas;
+            
+            $('#front_canvas').parent().css('display', 'block');
+            $('#front_svg_visualizer').parent().css('display', 'block');
+
+            $('#back_canvas').parent().css('display', 'none');
+            $('#back_svg_visualizer').parent().css('display', 'none');
+        }
+
+        if (value == "back") {
+            activeCanvas = _back_canvas;
+            $('#front_canvas').parent().css('display', 'none');
+            $('#front_svg_visualizer').parent().css('display', 'none');
+
+            $('#back_canvas').parent().css('display', 'block');
+            $('#back_svg_visualizer').parent().css('display', 'block');
+        }
+    }
+
+    function addNewText() { 
+        var iText = new fabric.IText('Tap and Type', {
+                top: 94.35 , // 94.35 for the default
+                fontSize: 30, // 71.25 for default font size. equivalent 2.5"
+                fill: '#000000',
+                //fontFamily: 'Academic M54',
+                textAlign: 'center',
+                stroke: null,
+                strokeWidth: 0,
+                borderColor: '#71b7f3',
+                cornerColor: '#71b7f3',
+                cornerSize: 10,
+                transparentCorners: false,
+                //hasRotatingPoint: false,
+                centeredScaling: true,
+                hasControls: true,
+                lockScalingFlip: true,
+                lockUniScaling: true,
+                objectCaching : false
+            });
+
+        activeCanvas.centerObject(iText);
+        activeCanvas.add(iText);
+        iText.centerH();
+        iText.setCoords();
+        activeCanvas.setActiveObject(iText);
+        activeCanvas.renderAll();
+    }
+    
+    function loadPattern(svgpath, clipathval, svgpatternid, visualizerObject, TypeAndSide){
+        $.get(svgpath, null, function(data){
+            var svgNode = $("svg", data);
+            var arrPath = [];
+            
+            var docNode = document.adoptNode(svgNode[0]);
+            // console.log(docNode);
+                for(var i = 0 ; i < docNode.querySelectorAll("path")['length'] ; i++){
+                    j = i + 1;
+                    k = "PatternColor" + j;
+
+                    var pathPatterns = docNode.querySelectorAll("path")[i];
+                
+                    // for setting clippath
+                    var att = document.createAttribute("clip-path");      
+                    att.value = clipathval;
+                    pathPatterns.setAttributeNode(att);
+
+                    // for set Pattern Id
+                    var getPatternIdFromSVG = TypeAndSide +"_"+ pathPatterns.getAttributeNode('id').value
+                    var att1 = document.createAttribute("id");      
+                    att1.value = getPatternIdFromSVG;
+                    pathPatterns.setAttributeNode(att1);
+
+                    // for PatternColor
+                    // var patterColor  = document.createAttribute("fill");      
+                    // patterColor.value = getPatternColor[i][k];
+                    // pathPatterns.setAttributeNode(patterColor);
+
+                    var s = new XMLSerializer();	
+                    var str = s.serializeToString(pathPatterns);
+                    
+                    arrPath.push(str);
+                }
+                
+                try{
+
+                    var contents = JSON.stringify(arrPath);
+                    var con = jQuery.parseJSON(contents);
+                    
+                    var countContents = con.length;
+                    if(countContents != 0){ // check if content
+                        var jContent = $.map(con, function(value) {
+                            return(value);
+                        });
+                        var patternHolder = document.getElementById(svgpatternid);
+                        $(patternHolder).html(jContent.join(""));
+
+                    }
+                }catch (e){
+                    //no errpr
+                }
+            
+        }, 'xml');
+    }
+   
+    </script>
 </body>
 </html>

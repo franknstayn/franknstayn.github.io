@@ -1,0 +1,16 @@
+{
+    "styles" : {
+
+        "style_name": "sample 1",
+        "sides" : [
+            "front", "back"
+        ],
+        
+        "files" : {
+            "front_canvas" : "./images/football-front.png",
+            "front_svg_visualizer" : "./images/football-front.svg",
+            "back_canvas" : "./images/football-back.svg",
+            "back_svg_visualizer" : "./images/football-back.svg"
+        }
+    }
+}
